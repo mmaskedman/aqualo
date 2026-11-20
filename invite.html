@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aqualo · Davet</title>
+<meta name="description" content="Arkadaşın seni Aqualo'ya davet etti. İkinize de 3 gün Aqualo Plus hediye.">
+<meta property="og:title" content="Aqualo'ya davetlisin">
+<meta property="og:description" content="Birlikte su içelim! İkimize de 3 gün Aqualo Plus hediye.">
+<meta property="og:image" content="https://mmaskedman.github.io/aqualo/assets/mascot-hello.webp">
+<meta name="theme-color" content="#FBF7F1">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#22384C; --muted:#5E6B7A; --gold:#F2A93B; --gold2:#E58A1F; --paper:#FFF8F0; --teal:#0B8293; }
+  * { box-sizing:border-box; }
+  html { background: var(--paper); }
+  body { margin:0; font-family:Nunito, system-ui, sans-serif; color:var(--ink); min-height:100vh;
+    background: radial-gradient(120% 70% at 0% 0%, #CDEFF8 0%, rgba(205,239,248,0) 60%),
+                radial-gradient(120% 70% at 100% 100%, #FFD9E8 0%, rgba(255,217,232,0) 60%), var(--paper); }
+  main { max-width:440px; margin:0 auto; padding:28px 20px 36px; text-align:center; }
+  .mascot { width:190px; height:190px; object-fit:contain; margin:4px auto 0; display:block; }
+  .kicker { font-weight:800; letter-spacing:.18em; font-size:12px; color:#B0701A; margin-top:6px; }
+  h1 { font-family:'Baloo 2', sans-serif; font-size:30px; line-height:1.15; margin:6px 0 6px; }
+  p.lead { font-size:16px; line-height:1.45; color:var(--muted); font-weight:700; margin:0 0 18px; }
+  .ticket { position:relative; margin:0 auto 14px; padding:16px 18px 14px; border-radius:20px; border:2px solid #fff;
+    background: linear-gradient(135deg, #FFE7A3, #F6C453 55%, #E9A23B); box-shadow:0 8px 18px rgba(176,112,26,.22); }
+  .ticket:before, .ticket:after { content:''; position:absolute; top:50%; width:18px; height:18px; margin-top:-9px; border-radius:50%; background:var(--paper); }
+  .ticket:before { left:-10px; } .ticket:after { right:-10px; }
+  .ticket .lbl { color:#fff; font-weight:800; font-size:12px; letter-spacing:.14em; text-shadow:0 1px 3px rgba(176,112,26,.45); }
+  .code { font-family:'Baloo 2', sans-serif; font-size:34px; letter-spacing:.06em; color:#fff; text-shadow:0 2px 6px rgba(176,112,26,.5); margin:2px 0 6px; }
+  .copy { border:0; background:#fff; color:#A9690F; font:800 15px Nunito, sans-serif; padding:10px 18px; border-radius:999px; cursor:pointer; }
+  .copy.done { background:#22B98F; color:#fff; }
+  .btn { display:block; width:100%; margin:10px 0 0; padding:15px 18px; border-radius:999px; font:800 18px 'Baloo 2', sans-serif; text-decoration:none; color:#fff; border:0; cursor:pointer; }
+  .btn.open { background: linear-gradient(135deg, #0FA3BD, #0A6F85); }
+  .btn.play { background: linear-gradient(135deg, #8B5CF6, #6D3BE0 60%, #2BA8E0); }
+  .btn.ios { background:#E6E9EE; color:#8A96A3; cursor:default; }
+  ol { text-align:left; margin:20px 0 0; padding:16px 18px 16px 38px; background:rgba(255,255,255,.75); border-radius:18px; line-height:1.55; font-weight:700; color:var(--muted); }
+  ol b { color:var(--ink); }
+  .bad h1 { font-size:24px; }
+  footer { margin-top:22px; font-size:12px; color:#8A96A3; }
+  footer a { color:#8A96A3; }
+</style>
+</head>
+<body>
+<main id="m">
+  <img class="mascot" src="assets/mascot-hello.webp" alt="">
+  <div class="kicker" data-t="kicker"></div>
+  <h1 data-t="title"></h1>
+  <p class="lead" data-t="lead"></p>
+
+  <div class="ticket" id="ticket">
+    <div class="lbl" data-t="codeLbl"></div>
+    <div class="code" id="code">AQ-····-····</div>
+    <button class="copy" id="copy" data-t="copy"></button>
+  </div>
+
+  <a class="btn open" id="open" data-t="open"></a>
+  <a class="btn play" id="play" data-t="play"></a>
+  <span class="btn ios" data-t="ios"></span>
+
+  <ol>
+    <li data-t="s1"></li>
+    <li data-t="s2"></li>
+    <li data-t="s3"></li>
+  </ol>
+  <footer><a href="./" data-t="support"></a> · <a href="privacy.html" data-t="privacy"></a></footer>
+</main>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var tr = (q.get('l') || navigator.language || '').toLowerCase().indexOf('tr') === 0;
+  var T = tr ? {
+    kicker: 'ARKADAŞINDAN DAVET', title: "Aqualo'ya davetlisin!",
+    lead: 'Birlikte su içelim. Bu kodla katıl, ikinize de 3 gün Aqualo Plus hediye.',
+    codeLbl: 'DAVET KODUN', copy: 'Kodu kopyala', copied: 'Kopyalandı ✓',
+    open: 'Aqualo zaten bende: uygulamada aç', play: "Google Play'den indir", ios: "App Store'da yakında",
+    s1: "<b>Uygulamayı indir.</b> Kod kopyalanır.",
+    s2: "Kurulumun ilk ekranında <b>“Davet kodun var mı?”</b> → <b>Yapıştır</b>.",
+    s3: "Kurulum bitince <b>“Hediyeni aç”</b>: 3 gün Aqualo Plus senin.",
+    bad: 'Bu davet bağlantısı eksik görünüyor. Arkadaşından yeniden göndermesini iste.',
+    support: 'Destek', privacy: 'Gizlilik'
+  } : {
+    kicker: 'AN INVITE FROM YOUR FRIEND', title: "You're invited to Aqualo!",
+    lead: "Let's drink water together. Join with this code and you both get 3 days of Aqualo Plus.",
+    codeLbl: 'YOUR INVITE CODE', copy: 'Copy code', copied: 'Copied ✓',
+    open: 'I already have Aqualo: open the app', play: 'Get it on Google Play', ios: 'Coming soon to the App Store',
+    s1: '<b>Get the app.</b> The code is copied.',
+    s2: 'On the first setup screen tap <b>“Got an invite code?”</b> → <b>Paste</b>.',
+    s3: 'When setup is done, tap <b>“Open your gift”</b>: 3 days of Aqualo Plus.',
+    bad: 'This invite link looks incomplete. Ask your friend to send it again.',
+    support: 'Support', privacy: 'Privacy'
+  };
+  document.documentElement.lang = tr ? 'tr' : 'en';
+  document.querySelectorAll('[data-t]').forEach(function (el) { el.innerHTML = T[el.getAttribute('data-t')] || ''; });
+
+  var raw = (q.get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (raw.indexOf('AQ') === 0) raw = raw.slice(2);
+  var ok = /^[A-HJKMNP-Z2-9]{8}$/.test(raw);
+  var code = ok ? 'AQ-' + raw.slice(0, 4) + '-' + raw.slice(4) : '';
+  var PKG = 'com.yunes.aqualo';
+  var play = 'https://play.google.com/store/apps/details?id=' + PKG + (ok ? '&referrer=' + encodeURIComponent('invite=' + code) : '');
+  var android = /android/i.test(navigator.userAgent);
+
+  if (!ok) {
+    document.getElementById('m').classList.add('bad');
+    document.querySelector('[data-t=lead]').innerHTML = T.bad;
+    document.getElementById('ticket').style.display = 'none';
+    document.getElementById('open').style.display = 'none';
+  } else {
+    document.getElementById('code').textContent = code;
+  }
+
+  function copy(done) {
+    if (!ok) { if (done) done(); return; }
+    var b = document.getElementById('copy');
+    var fin = function () { b.textContent = T.copied; b.classList.add('done'); if (done) done(); };
+    try {
+      navigator.clipboard.writeText(code).then(fin, function () { legacy(); fin(); });
+    } catch (e) { legacy(); fin(); }
+  }
+  function legacy() {
+    var t = document.createElement('textarea'); t.value = code; document.body.appendChild(t);
+    t.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(t);
+  }
+  document.getElementById('copy').onclick = function () { copy(); };
+
+  var openBtn = document.getElementById('open');
+  openBtn.href = android
+    ? 'intent://invite?c=' + encodeURIComponent(code) + '#Intent;scheme=aqualo;package=' + PKG + ';S.browser_fallback_url=' + encodeURIComponent(play) + ';end'
+    : 'aqualo://invite?c=' + encodeURIComponent(code);
+
+  var playBtn = document.getElementById('play');
+  playBtn.href = play;
+  playBtn.onclick = function (e) { e.preventDefault(); copy(function () { location.href = play; }); };
+})();
+</script>
+</body>
+</html>

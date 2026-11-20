@@ -28,15 +28,16 @@
     <img class="mascot" src="assets/mascot-curious.webp" alt="" width="360" height="360">
     <h1>Privacy Policy</h1>
     <p class="lead">What Aqualo keeps, why, and how you stay in control.</p>
-    <p class="updated">Last updated: 6 October 2026</p>
+    <p class="updated">Last updated: 20 November 2026</p>
   </section>
 <div class="card summary">
   <h2>The short version</h2>
   <ul>
     <li><strong>Your water log stays on your phone.</strong> What you drink, your goals, your weight and activity level are stored only on your device. We don't receive them.</li>
-    <li><strong>No sign-up needed.</strong> The Friends feature uses an anonymous account. Friends see only your name, avatar, today's progress as a percentage, your streak and whether you just had a drink.</li>
+    <li><strong>No sign-up needed.</strong> The Friends feature uses an anonymous account. Friends see only your name, avatar, today's progress as a percentage, your streak and whether you just had a drink. Linking Apple or Google is optional.</li>
+    <li><strong>You can block and report anyone</strong> who bothers you. We review reports within 24 hours.</li>
     <li><strong>Location is only for the weather</strong>, rounded to about 1 km, and we never store it.</li>
-    <li><strong>You can delete your social account any time</strong> in the app: Profile → Delete social account.</li>
+    <li><strong>You can delete your account any time</strong> in the app: Profile → Help → Want to delete your account?</li>
     <li><strong>The app has no ads.</strong> No data is shared with any ad network.</li>
     <li><strong>We don't sell your data.</strong></li>
   </ul>
@@ -54,7 +55,7 @@
   <li><a href="#notifications">Notifications</a></li>
   <li><a href="#photos">Photos and sharing</a></li>
   <li><a href="#purchases">Aqualo Plus and purchases</a></li>
-  <li><a href="#analytics">Usage analytics and crash reports</a></li>
+  <li><a href="#analytics">Analytics and crash reports</a></li>
   <li><a href="#bases">Why we're allowed to use your data</a></li>
   <li><a href="#sharing">Who we share data with</a></li>
   <li><a href="#transfers">International transfers</a></li>
@@ -85,14 +86,21 @@
   <li><strong>Profile:</strong> your Aqualo ID (for example AQ-7K2M-9QXF), the display name you choose, the number of the preset avatar you picked, your time zone and app language.</li>
   <li><strong>Daily summary</strong> (sent only when you have friends or pending friend requests): for each of the last 14 days, how much you drank in ml and that day's goal; your personal streak; vacation periods; and the time of your last drink.</li>
   <li><strong>Social activity:</strong> friend requests, friendships, nudges, mutual streaks and streak restores.</li>
+  <li><strong>Safety:</strong> the people you block, and the reports you send or receive (who reported whom, the reason picked from a fixed list, the reported display name and when).</li>
 </ul>
 <h3>What your friends can see</h3>
 <p>Your name, avatar, today's progress as a percentage, your personal streak, your mutual streak with them, and whether you had a drink in the last ~25 minutes. They <strong>can't</strong> see how many ml you drank, your goal, which drinks you had, your weight, your location or your photo.</p>
 <p>Anyone who knows your Aqualo ID can send you a friend request. Nothing is shared with them unless you accept.</p>
 <h3>Linking Apple or Google (optional)</h3>
-<p>If this option is available and you choose to link your account to Sign in with Apple or Google, we receive a unique account identifier from Apple or Google and, if you allow it, your email address. We use it only to bring your social account back if you change phones.</p>
-<h3>Deleting your social account</h3>
-<p>In the app, go to <strong>Profile → Delete social account</strong>. Your profile, daily summaries, friendships, requests, nudges and mutual streaks are deleted from our database right away. See also <a href="delete.html">Delete your data</a>.</p>
+<p>If you choose to link your account with Sign in with Apple or Google (Profile → Account → Protect your account), we receive a unique account identifier from Apple or Google and your email address. With Apple you can choose to hide your email; we then receive a private relay address. We use this only to bring back your Aqualo ID, friends, streaks and Plus if you change phones or reinstall. Your email is never shown to other users and we don't send you marketing email.</p>
+<h3>Blocking, reporting and display names</h3>
+<ul>
+  <li><strong>Blocking</strong> ends the friendship and stops that person from sending you requests or nudges. You can unblock in Profile → Account → Blocked.</li>
+  <li><strong>Reporting</strong> sends us the reason you pick and blocks the person. Reports are private: the reported person isn't told who reported them. We review reports within 24 hours.</li>
+  <li><strong>Display names</strong> are checked against a list of offensive words when you set them. If several people report a name, it's hidden (shown as "Aqualo") until we review it. We may remove accounts that harass others.</li>
+</ul>
+<h3>Deleting your account</h3>
+<p>In the app, go to <strong>Profile → Help → Want to delete your account?</strong> Your profile, daily summaries, friendships, requests, nudges, mutual streaks, blocks, reports and any linked Apple or Google sign-in are deleted from our database right away. See also <a href="delete.html">Delete your data</a>.</p>
 <p class="note">The server is provided by Supabase. Our database is hosted in the European Union (Frankfurt, Germany).</p>
 
 <h2 id="location">3. Location and weather</h2>
@@ -100,7 +108,7 @@
 
 <h2 id="notifications">4. Notifications</h2>
 <p>Water reminders are scheduled on your phone by the app itself. No server is involved and no one else can see them. You can turn them off in the app or in your phone's settings.</p>
-<p>When notifications about friend activity (for example a nudge) are available, the app will store a push token with your social account so we can deliver them through Expo's push service and Apple Push Notification service or Firebase Cloud Messaging. The token is deleted with your social account.</p>
+<p>If you allow notifications, the app stores a push token with your social account so we can tell you about friend activity (for example a nudge or a friend request). These are delivered through Expo's push service and Apple Push Notification service or Firebase Cloud Messaging. You can turn friend notifications off in Profile, and the token is deleted with your account.</p>
 
 <h2 id="photos">5. Photos and sharing</h2>
 <p>If you choose a profile photo, the app asks for permission to open your photo library and uses only the photo you pick. The photo stays on your phone; we don't upload it.</p>
@@ -109,26 +117,20 @@
 <h2 id="purchases">6. Aqualo Plus and purchases</h2>
 <p>Payments are handled by the Apple App Store or Google Play. We never see your payment card details.</p>
 <ul>
-  <li><strong>RevenueCat</strong> checks whether you have an active subscription. It receives an anonymous app user ID, your purchase receipts and basic device and app information.</li>
-  <li><strong>Superwall</strong> shows the subscription screen. It receives an anonymous ID, basic device information and how you interact with that screen.</li>
+  <li><strong>RevenueCat</strong> checks whether you have Aqualo Plus and keeps your purchase history so it can be restored. It receives the random identifier of your Aqualo account (not your name or email), your purchase receipts and basic device and app information.</li>
 </ul>
 
-<h2 id="analytics">7. Usage analytics and crash reports</h2>
-<p>To understand which features help and to fix problems, the app sends usage events to <strong>Mixpanel</strong>, for example which screens are opened and when a drink is logged.</p>
-<ul>
-  <li>Events come with the device model, OS and app version, language and an approximate country or region.</li>
-  <li>They're linked to a random ID, not to your name.</li>
-  <li>When the app crashes, a crash report with technical details (device, OS, app version and error log) is sent so we can fix the bug.</li>
-</ul>
-<p>Where the law requires consent, we ask before collecting analytics. You can withdraw that consent at any time in the app's settings.</p>
+<h2 id="analytics">7. Analytics and crash reports</h2>
+<p>The app doesn't contain any analytics or crash reporting tools of its own. If you agreed in your phone's settings to share analytics with app developers, Apple or Google may give us anonymous, aggregated crash and usage statistics. We can't link them to you.</p>
+<p>If we ever add an analytics tool, we'll update this policy first and, where the law requires it, ask for your consent in the app.</p>
 
 <h2 id="bases">8. Why we're allowed to use your data</h2>
 <table>
   <thead><tr><th>Purpose</th><th>Legal basis (GDPR art. 6 / KVKK art. 5)</th></tr></thead>
   <tbody>
     <tr><td>Friends, mutual streaks, subscriptions</td><td>Performance of our agreement with you (providing the features you ask for)</td></tr>
-    <tr><td>Location for weather, photo library, notifications, analytics where consent is required</td><td>Your consent, which you can withdraw at any time</td></tr>
-    <tr><td>Security, preventing abuse, crash reports</td><td>Our legitimate interests in keeping the app safe, working and free to use</td></tr>
+    <tr><td>Location for weather, photo library, notifications, linking Apple or Google</td><td>Your consent, which you can withdraw at any time</td></tr>
+    <tr><td>Security, blocking and reports, name checks, preventing abuse</td><td>Our legitimate interests in keeping the app and its users safe</td></tr>
     <tr><td>Keeping records when the law requires it</td><td>Legal obligation</td></tr>
   </tbody>
 </table>
@@ -141,9 +143,7 @@
     <tr><td>Supabase Inc.</td><td>Server and database for Friends (EU region)</td></tr>
     <tr><td>Open-Meteo</td><td>Weather forecast from rounded coordinates</td></tr>
     <tr><td>Apple, Google</td><td>App stores, payments, optional sign-in, notification delivery</td></tr>
-    <tr><td>RevenueCat Inc., Superwall Inc.</td><td>Subscription status and subscription screen</td></tr>
-    <tr><td>Mixpanel Inc.</td><td>Usage analytics</td></tr>
-    <tr><td>Crash reporting provider</td><td>Crash reports</td></tr>
+    <tr><td>RevenueCat Inc.</td><td>Purchase status and purchase history</td></tr>
     <tr><td>Expo (650 Industries Inc.)</td><td>Delivering push notifications</td></tr>
   </tbody>
 </table>
@@ -159,8 +159,8 @@
     <tr><td>Log, goals, body info, settings</td><td>On your phone until you delete them or the app</td></tr>
     <tr><td>Social account and daily summaries</td><td>Until you delete your social account. Encrypted backups are overwritten within a short time after that.</td></tr>
     <tr><td>Location</td><td>Not stored</td></tr>
-    <tr><td>Analytics events</td><td>Up to 24 months</td></tr>
-    <tr><td>Crash reports</td><td>Up to 90 days</td></tr>
+    <tr><td>Blocks</td><td>Until you unblock or either account is deleted</td></tr>
+    <tr><td>Reports</td><td>Up to 12 months after we review them, or until either account is deleted</td></tr>
     <tr><td>Purchase records</td><td>As long as required by tax and consumer law</td></tr>
   </tbody>
 </table>
